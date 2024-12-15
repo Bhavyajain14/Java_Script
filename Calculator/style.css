@@ -38,21 +38,21 @@ input {
 input::placeholder {
   color: #ffffff;
 }
-button{
-    width: 60px;
-    height: 60px;
-    border: none;
-    margin: 10px;
-    border-radius: 50px;
-    background: transparent;
-    color: white;
-    font-size: 20px;
-    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1);
-    cursor: pointer;
+button {
+  width: 60px;
+  height: 60px;
+  border: none;
+  margin: 10px;
+  border-radius: 50px;
+  background: transparent;
+  color: white;
+  font-size: 20px;
+  box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1);
+  cursor: pointer;
 }
-.equal-btn{
-    background-color: #fb7c14;
+.equal-btn {
+  background-color: #fb7c14;
 }
-.operator{
-color: green;
+.operator {
+  color: green;
 }

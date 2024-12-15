@@ -1,24 +1,49 @@
-let input = document.getElementById("inputBox");
-let buttons = document.querySelectorAll("button");
+const input = document.getElementById("inputBox");
+const buttons = document.querySelectorAll("button");
 
-let string = " ";
+let currentExpression = "";
+let memory = 0;
 
-let arr = Array.from(buttons);
-
-arr.forEach((button) => {
+buttons.forEach((button) => {
   button.addEventListener("click", (e) => {
-    if (e.target.innerHTML == "=") {
-      string = eval(string);
-      input.value = string;
-    } else if (e.target.innerHTML == "AC") {
-      string = "";
-      input.value = string;
-    } else if (e.target.innerHTML == "DEL") {
-      string = string.substring(0, string.length - 1);
-      input.value = string
-    } else {
-      string += e.target.innerHTML;
-      input.value = string;
+    const value = e.target.textContent;
+
+    switch (value) {
+      case "=":
+        try {
+          currentExpression = eval(currentExpression).toString();
+        } catch {
+          currentExpression = "Error";
+        }
+        break;
+      case "AC":
+        currentExpression = "";
+        break;
+      case "DEL":
+        currentExpression = currentExpression.slice(0, -1);
+        break;
+      case "%":
+        currentExpression = (eval(currentExpression) / 100).toString();
+        break;
+      case "√":
+        currentExpression = Math.sqrt(eval(currentExpression)).toString();
+        break;
+      case "M+":
+        memory += eval(currentExpression);
+        break;
+      case "M-":
+        memory -= eval(currentExpression);
+        break;
+      case "MR":
+        currentExpression = memory.toString();
+        break;
+      case "MC":
+        memory = 0;
+        break;
+      default:
+        if (currentExpression === "Error") currentExpression = "";
+        currentExpression += value;
     }
+    input.value = currentExpression || "0";
   });
 });
